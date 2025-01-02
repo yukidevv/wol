@@ -1,0 +1,13 @@
+services:
+  php-wol:
+    build: .
+    image: php-wol
+    container_name: php-wol
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    restart: always
+    network_mode: host 
+    cap_add:
+      - NET_RAW
+      - NET_BROADCAST
