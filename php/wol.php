@@ -24,4 +24,4 @@ function WakeOnLan($addr, $mac) {
         echo "Magic Packet sent (".$e.") to ".$addr.", MAC=".$mac;
      }
 }
-WakeOnLan('192.168.1.255', $_POST['mac']); 
+WakeOnLan('192.168.1.255', $_POST['mac']);

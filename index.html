@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Wake on LAN</title>
+</head>
+
+<body>
+  <h1>Wake-on-LAN</h1>
+  <form method="POST" action="php/wol.php">
+    <label for="mac">MACアドレス:</label>
+    <select id="mac" name="mac" required>
+      <!-- 動的に作成 -->
+    </select>
+    <button type="submit">送信</button>
+  </form>
+  <script>
+    const fetchData = async () => {
+      try {
+        const response = await fetch("data/mac.json");
+        const data = await response.json();
+        const selectBox = document.getElementById("mac");
+
+        data.devices.forEach(device => {
+          const option = document.createElement('option');
+          option.value = device.mac;
+          option.textContent = `${device.hostName} ${device.mac}`;
+          selectBox.appendChild(option);
+        });
+      } catch (error) {
+        console.log("Failure fetch.");
+      }
+    }
+    fetchData();
+  </script>
+</body>
+
+</html>
